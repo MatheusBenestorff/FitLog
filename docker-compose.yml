@@ -2,24 +2,28 @@ version: '3.8'
 services:
   backend:
     build: .
+    container_name: fitlog-backend
     ports:
       - "8080:8080"
     depends_on:
       - db
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/fitlog_db
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: sua_senha
+      SPRING_DATASOURCE_USERNAME: fitlog_user
+      SPRING_DATASOURCE_PASSWORD: fitlog_pass
+    restart: always
 
   db:
     image: mysql:8.0
-    ports:
-      - "3306:3306"
+    container_name: fitlog-mysql
     environment:
-      MYSQL_ROOT_PASSWORD: sua_senha
+      MYSQL_ROOT_PASSWORD: root_pass
       MYSQL_DATABASE: fitlog_db
+      MYSQL_USER: fitlog_user
+      MYSQL_PASSWORD: fitlog_pass
     volumes:
       - mysql_data:/var/lib/mysql
+    restart: always
 
 volumes:
   mysql_data:
