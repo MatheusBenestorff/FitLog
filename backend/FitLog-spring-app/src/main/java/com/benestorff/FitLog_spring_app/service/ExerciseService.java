@@ -21,5 +21,4 @@ public class ExerciseService {
         return exerciseRepository.save(exercise);
     }
 
-    // Outros métodos conforme necessário
 }

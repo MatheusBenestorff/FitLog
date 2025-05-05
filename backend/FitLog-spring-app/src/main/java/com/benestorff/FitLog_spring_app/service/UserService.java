@@ -15,18 +15,18 @@ public class UserService {
     private UserRepository userRepository;
 
     public List<User> findAll() {
-        return UserRepository.findAll();
+        return userRepository.findAll();
     }
 
     public Optional<User> findById(Long id) {
-        return UserRepository.findById(id);
+        return userRepository.findById(id);
     }
 
     public User save(User user) {
-        return UserRepository.save(user);
+        return userRepository.save(user);
     }
 
     public void deleteById(Long id) {
-        UserRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
 }
