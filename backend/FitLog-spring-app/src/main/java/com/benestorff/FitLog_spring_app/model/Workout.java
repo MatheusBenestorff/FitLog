@@ -25,6 +25,11 @@ public class Workout {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "workout", cascade = CascadeType.ALL)
-    private List<WorkoutExercise> exercises;
+    @ManyToMany
+    @JoinTable(
+            name = "workout_exercises",
+            joinColumns = @JoinColumn(name = "workout_id"),
+            inverseJoinColumns = @JoinColumn(name = "exercise_id")
+    )
+    private List<Exercise> exercises;
 }

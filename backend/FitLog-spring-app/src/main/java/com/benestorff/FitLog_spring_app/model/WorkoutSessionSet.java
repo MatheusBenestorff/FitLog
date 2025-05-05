@@ -17,6 +17,7 @@ public class WorkoutSessionSet {
 
     private int reps;
     private double weight;
+    private int setNumber;
 
     @ManyToOne
     @JoinColumn(name = "workout_session_id")

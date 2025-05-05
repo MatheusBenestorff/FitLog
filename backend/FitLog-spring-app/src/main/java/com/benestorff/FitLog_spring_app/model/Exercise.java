@@ -24,7 +24,8 @@ public class Exercise {
     @Column(columnDefinition = "TEXT")
     private String instructions;
 
-    @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL)
-    private List<WorkoutExercise> workoutExercises;
+    @ManyToMany(mappedBy = "exercises")
+    private List<Workout> workouts;
+
 }
 
