@@ -14,7 +14,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/fitlog_db?useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: fitlog_user
       SPRING_DATASOURCE_PASSWORD: fitlog_pass
-      SPRING_DATASOURCE_HIKARI_CONNECTION-TIMEOUT: 30000
+      SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT: "30000"
       SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQLDialect
     restart: always
 
