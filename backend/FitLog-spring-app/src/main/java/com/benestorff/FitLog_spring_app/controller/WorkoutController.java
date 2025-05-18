@@ -16,11 +16,11 @@ public class WorkoutController {
 
     @GetMapping("/user/{userId}")
     public List<Workout> getByUserId(@PathVariable Long userId) {
-        return workoutService.getWorkoutsByUser(userId); // corrigido
+        return workoutService.getWorkoutsByUser(userId); 
     }
 
     @PostMapping("/user/{userId}")
     public Workout create(@PathVariable Long userId, @RequestBody Workout workout) {
-        return workoutService.createWorkout(userId, workout); // corrigido
+        return workoutService.createWorkout(userId, workout); 
     }
 }

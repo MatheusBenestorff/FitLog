@@ -18,6 +18,8 @@ public class Workout {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String name;
     private LocalDate date;
     private String description;
 
@@ -27,9 +29,9 @@ public class Workout {
 
     @ManyToMany
     @JoinTable(
-            name = "workout_exercises",
-            joinColumns = @JoinColumn(name = "workout_id"),
-            inverseJoinColumns = @JoinColumn(name = "exercise_id")
+        name = "workout_exercises",
+        joinColumns = @JoinColumn(name = "workout_id"),
+        inverseJoinColumns = @JoinColumn(name = "exercise_id")
     )
     private List<Exercise> exercises;
 }

@@ -16,11 +16,11 @@ public class ExerciseController {
 
     @GetMapping
     public List<Exercise> getAll() {
-        return exerciseService.getAllExercises(); // corrigido
+        return exerciseService.getAllExercises(); 
     }
 
     @PostMapping
     public Exercise create(@RequestBody Exercise exercise) {
-        return exerciseService.createExercise(exercise); // corrigido
+        return exerciseService.createExercise(exercise); 
     }
 }
