@@ -13,12 +13,11 @@ public class User {
     private Double weight;
     private List<Workout> workouts;
 
-    public User(String name, String email, String password, String birthDate, String gender, String height,
-                String weight, List<Workout> workouts) {
+    public User(String name, String email, String password, String birthDate, String gender, Double height,
+                Double weight, List<Workout> workouts) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.user = user;
         this.birthDate = birthDate;
         this.gender = gender;
         this.height = height;
@@ -39,7 +38,7 @@ public class User {
         return email;
     }
 
-    public String getPassword) {
+    public String getPassword() {
         return password;
     }
 

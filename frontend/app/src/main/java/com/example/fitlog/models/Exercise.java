@@ -12,7 +12,7 @@ public class Exercise {
     public Exercise(String name, String muscleGroup, String equipment, String instructions) {
         this.name = name;
         this.muscleGroup = muscleGroup;
-        this.equipment = equipment
+        this.equipment = equipment;
         this.instructions = instructions;
     }
 

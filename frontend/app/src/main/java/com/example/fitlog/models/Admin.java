@@ -9,6 +9,6 @@ public class Admin {
     }
 
     public User getUser(){
-        return id;
+        return user;
     }
 }

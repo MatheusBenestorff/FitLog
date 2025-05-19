@@ -12,7 +12,7 @@ public class WorkoutSessionSet {
 
     public WorkoutSessionSet(Integer reps, Double weight, Integer setNumber, WorkoutSession workoutSession, Exercise exercise) {
         this.reps = reps;
-        this.weight = weight
+        this.weight = weight;
         this.setNumber = setNumber;
         this.workoutSession = workoutSession;
         this.exercise = exercise;
@@ -30,7 +30,7 @@ public class WorkoutSessionSet {
         return weight;
     }
 
-    public Integer getSetNumber) {
+    public Integer getSetNumber() {
         return setNumber;
     }
 

@@ -12,7 +12,7 @@ public class WorkoutSession {
 
     public WorkoutSession(String startTime, String endTime, User user, Workout workout, List<WorkoutSessionSet> sets) {
         this.startTime = startTime;
-        this.endTime = endTime
+        this.endTime = endTime;
         this.user = user;
         this.workout = workout;
         this.sets = sets;
@@ -31,7 +31,7 @@ public class WorkoutSession {
         return endTime;
     }
 
-    public User getUser) {
+    public User getUser() {
         return user;
     }
 
