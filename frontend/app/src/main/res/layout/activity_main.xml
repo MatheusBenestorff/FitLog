@@ -7,10 +7,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    android:background="#000000"
+    android:background="#001f3d"
     tools:context=".MainActivity">
 
-    <!-- Grupo centralizado -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,14 +18,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/loginTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FitLog"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
-            android:textStyle="bold"
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="296dp"
+            android:layout_height="158dp"
+            android:contentDescription="Logo do aplicativo"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,10 +37,10 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#AAAAAA"
             android:inputType="textEmailAddress"
-            app:layout_constraintTop_toBottomOf="@id/loginTitle"
+            app:layout_constraintTop_toBottomOf="@id/logoImage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp" />
+            android:layout_marginTop="18dp" />
 
         <EditText
             android:id="@+id/passwordInput"
@@ -62,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Criar conta"
-            android:textColor="#FFA500"
+            android:textColor="#e15905"
             app:layout_constraintTop_toBottomOf="@id/passwordInput"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +71,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Entrar"
-            android:backgroundTint="#FFA500"
+            android:backgroundTint="#e15905"
             android:textColor="#000000"
             app:layout_constraintTop_toBottomOf="@id/createAccountLink"
             app:layout_constraintStart_toStartOf="parent"
