@@ -26,12 +26,16 @@ public class User {
     }
 
 
+
     public Long getId() {
         return id;
     }
 
     public String getName() {
         return name;
+    }
+    public void setName(String newName) {
+        this.name = newName;
     }
 
     public String getEmail() {
@@ -61,6 +65,7 @@ public class User {
     public List<Workout> getWorkouts(){
         return workouts;
     }
+
 
 }
 

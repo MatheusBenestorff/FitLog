@@ -33,7 +33,7 @@
             android:id="@+id/emailInput"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="E-mail ou usuário"
+            android:hint="E-mail"
             android:textColor="#FFFFFF"
             android:textColorHint="#AAAAAA"
             android:inputType="textEmailAddress"
@@ -59,12 +59,13 @@
             android:id="@+id/createAccountLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Criar conta"
             android:textColor="#e15905"
-            app:layout_constraintTop_toBottomOf="@id/passwordInput"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            app:layout_constraintHorizontal_bias="0.008"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordInput" />
 
         <Button
             android:id="@+id/loginButton"
