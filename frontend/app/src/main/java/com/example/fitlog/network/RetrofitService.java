@@ -16,4 +16,7 @@ public class RetrofitService {
         }
         return retrofit;
     }
+    public static UserApi getUserApi() {
+        return getRetrofitInstance().create(UserApi.class);
+    }
 }

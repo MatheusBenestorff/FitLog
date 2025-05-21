@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         genderInput = findViewById(R.id.genderInput);
         heightInput = findViewById(R.id.heightInput);
         weightInput = findViewById(R.id.weightInput);
-        registerButton = findViewById(R.id.registerButton);
+        registerButton = findViewById(R.id.createAccountButton);
         loginLink = findViewById(R.id.loginLink);
 
         registerButton.setOnClickListener(v -> attemptRegister());
@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
         User user = new User(name, email, password, birthDate, gender, height, weight, null);
 
         UserApi userApi = RetrofitService.getRetrofitInstance().create(UserApi.class);
-        userApi.register(user).enqueue(new Callback<User>() {
+        userApi.createUser(user).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {

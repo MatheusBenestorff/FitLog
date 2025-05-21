@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         createAccountLink = findViewById(R.id.createAccountLink);
 
         loginButton.setOnClickListener(v -> attemptLogin());
-        createAccountLink.setOnClickListener(v -> goToRegister());
+        createAccountLink.setOnClickListener(v -> goToRegister()); // Listener já definido aqui
     }
 
     private void attemptLogin() {
@@ -70,17 +70,11 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Erro de rede. Tente novamente.", Toast.LENGTH_SHORT).show();
             }
         });
-
-        TextView createAccountLink = findViewById(R.id.createAccountLink);
-        createAccountLink.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-            startActivity(intent);
-        });
-
     }
 
     private void goToRegister() {
-
+        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     private void goToHome() {
@@ -88,5 +82,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 }
