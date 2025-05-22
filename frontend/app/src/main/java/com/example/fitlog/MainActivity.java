@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         createAccountLink = findViewById(R.id.createAccountLink);
 
         loginButton.setOnClickListener(v -> attemptLogin());
-        createAccountLink.setOnClickListener(v -> goToRegister()); // Listener já definido aqui
+        createAccountLink.setOnClickListener(v -> goToRegister());
     }
 
     private void attemptLogin() {

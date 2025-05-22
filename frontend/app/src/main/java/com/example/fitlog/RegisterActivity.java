@@ -1,5 +1,6 @@
 package com.example.fitlog;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitlog.models.User;
 import com.example.fitlog.network.RetrofitService;
 import com.example.fitlog.network.UserApi;
+
+import java.util.Calendar;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,6 +38,26 @@ public class RegisterActivity extends AppCompatActivity {
         weightInput = findViewById(R.id.weightInput);
         registerButton = findViewById(R.id.createAccountButton);
         loginLink = findViewById(R.id.loginLink);
+        birthDateInput.setFocusable(false);
+        birthDateInput.setClickable(true);
+        birthDateInput.setOnClickListener(v -> {
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    RegisterActivity.this,
+                    (view, selectedYear, selectedMonth, selectedDay) -> {
+                        String formattedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d", selectedYear, selectedMonth + 1, selectedDay);
+                        birthDateInput.setText(formattedDate);
+                    },
+                    year, month, day
+            );
+            datePickerDialog.show();
+        });
+
+
 
         registerButton.setOnClickListener(v -> attemptRegister());
         loginLink.setOnClickListener(v -> {

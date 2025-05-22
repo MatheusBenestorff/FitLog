@@ -74,16 +74,21 @@
 
             <EditText
                 android:id="@+id/birthDateInput"
-                android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:layout_width="300dp"
                 android:hint="Data de nascimento"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#AAAAAA"
-                android:inputType="date"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="true"
                 app:layout_constraintTop_toBottomOf="@id/passwordInput"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="18dp" />
+
+
+
 
             <EditText
                 android:id="@+id/genderInput"
