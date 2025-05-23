@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.benestorff.FitLog_spring_app.repository.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +24,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @GetMapping
     public List<User> getAll() {
         return userService.findAll();
@@ -34,8 +39,22 @@ public class UserController {
     }
 
     @PostMapping
-    public User create(@RequestBody User user) {
-        return userService.save(user);
+    public ResponseEntity<?> create(@RequestBody User user) {
+        try {
+            if (user.getEmail() == null || user.getPassword() == null) {
+                return ResponseEntity.badRequest().body("Email e senha são obrigatórios");
+            }
+            
+            if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+                return ResponseEntity.badRequest().body("Email já cadastrado");
+            }
+            
+            User savedUser = userService.save(user);
+            return ResponseEntity.ok(savedUser);
+            
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Erro ao criar usuário: " + e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
@@ -47,11 +66,11 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         Optional<User> optionalUser = userRepository.findByEmail(loginRequest.getEmail());
-
+    
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
-            if (user.getPassword().equals(loginRequest.getPassword())) {
-                return ResponseEntity.ok(user);
+            if (passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
+                return ResponseEntity.ok(user); // ou gerar token JWT, etc.
             } else {
                 return ResponseEntity.status(401).body("Credenciais inválidas");
             }
@@ -59,4 +78,5 @@ public class UserController {
             return ResponseEntity.status(401).body("Credenciais inválidas");
         }
     }
+    
 }

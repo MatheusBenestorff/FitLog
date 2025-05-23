@@ -2,7 +2,6 @@ package com.benestorff.FitLog_spring_app.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,10 +17,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Column(nullable = false, unique = true)
     private String email;
+    
+    @Column(nullable = false)
     private String password;
-
+    
+    private String name;
     private LocalDate birthDate;
     private String gender;
     private Double height;
