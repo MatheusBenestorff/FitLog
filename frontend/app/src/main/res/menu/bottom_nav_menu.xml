@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/casa_icon"
+        android:title="Início" />
+    <item
+        android:id="@+id/nav_workouts"
+        android:icon="@drawable/workout_icon"
+        android:title="Treinos" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile_icon"
+        android:title="Perfil" />
+</menu>
