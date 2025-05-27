@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_dashboard"
+        android:id="@+id/nav_home"
         android:icon="@drawable/casa_icon"
         android:title="Início" />
     <item

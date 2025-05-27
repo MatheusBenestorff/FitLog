@@ -11,11 +11,12 @@
         android:id="@+id/textDashboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bem-vindo ao FitLog!"
+        android:text="Home Page"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
