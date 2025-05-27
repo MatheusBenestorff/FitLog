@@ -95,9 +95,16 @@ public class RegisterActivity extends AppCompatActivity {
                     startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                     finish();
                 } else {
-                    Toast.makeText(RegisterActivity.this, "Erro ao criar conta", Toast.LENGTH_SHORT).show();
+                    try {
+                        String errorBody = response.errorBody().string();
+                        Log.e("REGISTER", "Erro: " + response.code() + " - " + errorBody);
+                        Toast.makeText(RegisterActivity.this, "Erro: " + response.code(), Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
+
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
