@@ -22,9 +22,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:itemIconTint="#e15905"
-        app:itemTextColor="#e15905"
+        app:itemIconTint="@color/bottom_nav_color"
+        app:itemTextColor="@color/bottom_nav_color"
         app:itemIconSize="65dp"
+        app:itemActiveIndicatorStyle="@style/NoActiveIndicator"
         app:menu="@menu/bottom_nav_menu"/>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
