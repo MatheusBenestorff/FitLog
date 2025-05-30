@@ -14,6 +14,8 @@ import com.example.fitlog.adapter.WorkoutAdapter;
 import com.example.fitlog.models.Workout;
 import com.example.fitlog.activities.NewWorkoutActivity;
 import com.example.fitlog.network.WorkoutApi;
+
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,8 +29,8 @@ public class WorkoutsFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private WorkoutAdapter adapter;
-    private List<Workout> workoutList;
-    private LinearLayout btnNovaRotina;
+    private List<Workout> workoutList = new ArrayList<>();
+    private LinearLayout btnNovoWorkout;
 
     private WorkoutApi workoutApi;
 
@@ -51,8 +53,8 @@ public class WorkoutsFragment extends Fragment {
         workoutApi = RetrofitService.getRetrofitInstance().create(WorkoutApi.class);
         getWorkouts();
 
-        btnNovaRotina = view.findViewById(R.id.btnNovaRotina);
-        btnNovaRotina.setOnClickListener(v -> {
+        btnNovoWorkout = view.findViewById(R.id.btnNovoWorkout);
+        btnNovoWorkout.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), NewWorkoutActivity.class);
             startActivity(intent);
         });

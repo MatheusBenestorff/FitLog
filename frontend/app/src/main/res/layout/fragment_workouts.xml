@@ -33,7 +33,7 @@
         android:weightSum="2">
 
         <LinearLayout
-            android:id="@+id/btnNovaRotina"
+            android:id="@+id/btnNovoWorkout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -55,8 +55,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nova Rotina"
-                android:textSize="20sp"
+                android:text="Novo Workout"
+                android:textSize="15sp"
                 android:textColor="#e15905"
                 android:layout_marginStart="8dp"
                 android:gravity="center_vertical"/>
