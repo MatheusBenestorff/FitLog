@@ -19,10 +19,16 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) 
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/users", "/auth/**").permitAll() 
-                .anyRequest().authenticated() 
+                .requestMatchers(
+                    "/api/users",
+                    "/auth/**",
+                    "/api/exercises/**", 
+                    "/api/workouts/**"
+                ).permitAll()
+                .anyRequest().authenticated()
             );
-
+    
         return http.build();
     }
+    
 }

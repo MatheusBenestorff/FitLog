@@ -52,9 +52,16 @@ public class CreateExerciseActivity extends AppCompatActivity {
                         Toast.makeText(CreateExerciseActivity.this, "Exercício criado!", Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
-                        Toast.makeText(CreateExerciseActivity.this, "Erro ao criar exercício", Toast.LENGTH_SHORT).show();
+                        String erroMsg = "Erro: " + response.code();
+                        try {
+                            erroMsg += " - " + response.errorBody().string();
+                        } catch (Exception e) {
+                            erroMsg += " (sem detalhes)";
+                        }
+                        Toast.makeText(CreateExerciseActivity.this, erroMsg, Toast.LENGTH_LONG).show();
                     }
                 }
+
 
                 @Override
                 public void onFailure(Call<Exercise> call, Throwable t) {

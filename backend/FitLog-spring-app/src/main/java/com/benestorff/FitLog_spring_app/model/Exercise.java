@@ -3,7 +3,6 @@ package com.benestorff.FitLog_spring_app.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 
 @Entity
 @Table(name = "exercises")
@@ -24,8 +23,6 @@ public class Exercise {
     @Builder.Default               
     private boolean isSelected = false;
 
-    @ManyToMany(mappedBy = "exercises")
-    private List<Workout> workouts;
 
 }
 

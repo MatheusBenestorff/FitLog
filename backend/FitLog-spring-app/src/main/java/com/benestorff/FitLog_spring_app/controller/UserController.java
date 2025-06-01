@@ -1,14 +1,17 @@
 package com.benestorff.FitLog_spring_app.controller;
 
 import com.benestorff.FitLog_spring_app.model.User;
+import com.benestorff.FitLog_spring_app.model.Workout;
 import com.benestorff.FitLog_spring_app.network.LoginRequest;
 import com.benestorff.FitLog_spring_app.service.UserService;
+import com.benestorff.FitLog_spring_app.service.WorkoutService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.benestorff.FitLog_spring_app.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.Authentication;
 
 
 import java.util.List;
@@ -23,6 +26,10 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private WorkoutService workoutService;
+    
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -70,13 +77,37 @@ public class UserController {
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             if (passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
-                return ResponseEntity.ok(user); // ou gerar token JWT, etc.
+                return ResponseEntity.ok(user); 
             } else {
                 return ResponseEntity.status(401).body("Credenciais inválidas");
             }
         } else {
             return ResponseEntity.status(401).body("Credenciais inválidas");
         }
+    }
+    
+    @GetMapping("/{userId}/workouts")
+    public List<Workout> getUserWorkouts(@PathVariable Long userId) {
+        return workoutService.getWorkoutsByUser(userId);
+    }
+
+    @PostMapping("/{userId}/workouts")
+    public Workout createUserWorkout(@PathVariable Long userId, @RequestBody Workout workout) {
+        return workoutService.createWorkout(userId, workout);
+    }
+    
+    @GetMapping("/me")
+    public ResponseEntity<?> getCurrentUser(Authentication auth) {
+        if (auth == null || auth.getName() == null) {
+            return ResponseEntity.status(401).body("Usuário não autenticado");
+        }
+    
+        Optional<User> userOpt = userService.findByEmail(auth.getName());
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body("Usuário não encontrado");
+        }
+    
+        return ResponseEntity.ok(userOpt.get());
     }
     
 }
