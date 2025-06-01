@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#FFFFFF">
+    android:backgroundTint="#011629">
 
     <TextView
         android:id="@+id/exercise_name"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Exemplo"
         android:textSize="24sp"
-        android:textColor="#000000"
+        android:textColor="#CCCCCC"
         android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Exemplo"
         android:textSize="18sp"
-        android:textColor="#555555"/>
+        android:textColor="#CCCCCC"/>
 
 
 </LinearLayout>

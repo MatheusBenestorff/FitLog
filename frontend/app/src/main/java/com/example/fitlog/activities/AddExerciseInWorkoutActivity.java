@@ -2,6 +2,7 @@ package com.example.fitlog.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,11 +46,18 @@ public class AddExerciseInWorkoutActivity extends AppCompatActivity {
         btnCriar.setVisibility(Button.GONE);
 
         btnCriar.setOnClickListener(v -> {
-            Intent resultIntent = new Intent();
-            resultIntent.putExtra("selectedExercises", new ArrayList<>(adapter.getSelectedExercises()));
-            setResult(RESULT_OK, resultIntent);
-            finish();
+            if (adapter.getSelectedExercises().isEmpty()) {
+                Intent intent = new Intent(this, CreateExerciseActivity.class);
+                startActivity(intent);
+            } else {
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("selectedExercises", new ArrayList<>(adapter.getSelectedExercises()));
+                setResult(RESULT_OK, resultIntent);
+                finish();
+            }
         });
+
+
 
         btnCancelar.setOnClickListener(v -> finish());
 
@@ -66,6 +74,7 @@ public class AddExerciseInWorkoutActivity extends AppCompatActivity {
                         int count = adapter.getSelectedExercises().size();
                         btnCriar.setText("Adicionar exercício" + (count != 1 ? "s" : ""));
                         btnCriar.setEnabled(count > 0);
+                        btnCriar.setVisibility(count > 0 ? View.VISIBLE : View.GONE);
                     });
 
                     recyclerView.setAdapter(adapter);
