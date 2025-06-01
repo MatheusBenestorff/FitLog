@@ -13,9 +13,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:background="#011629"
+        android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -31,12 +34,14 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Adicionar Exercício"
             android:textColor="#e15905"
             android:textStyle="bold"
             android:gravity="center"
-            android:textSize="18sp"
-            android:layout_weight="1"/>
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/btnCriar"
@@ -48,8 +53,10 @@
             android:backgroundTint="#333333"
             android:textColor="#FFFFFF"
             android:paddingLeft="12dp"
-            android:paddingRight="12dp"/>
+            android:paddingRight="12dp" />
+
     </LinearLayout>
+
 
     <EditText
         android:id="@+id/editTextBuscar"
@@ -92,6 +99,22 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textRecentes"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <Button
+        android:id="@+id/btnAdicionarExercicio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="+ Adicionar exercício"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:backgroundTint="#e15905"
+        android:textColor="#FFFFFF"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

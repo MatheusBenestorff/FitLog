@@ -29,7 +29,7 @@ public class AddExerciseInWorkoutActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ExerciseAdapter adapter;
     private final ExerciseApi exerciseApi = RetrofitService.getRetrofitInstance().create(ExerciseApi.class);
-    private Button btnCriar;
+    private Button btnCriar, btnAdicionarExercicio;
     private TextView btnCancelar;
 
     @Override
@@ -41,15 +41,13 @@ public class AddExerciseInWorkoutActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         btnCriar = findViewById(R.id.btnCriar);
+        btnAdicionarExercicio = findViewById(R.id.btnAdicionarExercicio);
         btnCancelar = findViewById(R.id.btnCancelar);
 
-        btnCriar.setVisibility(Button.GONE);
+        btnAdicionarExercicio.setVisibility(View.GONE);
 
-        btnCriar.setOnClickListener(v -> {
-            if (adapter.getSelectedExercises().isEmpty()) {
-                Intent intent = new Intent(this, CreateExerciseActivity.class);
-                startActivity(intent);
-            } else {
+        btnAdicionarExercicio.setOnClickListener(v -> {
+            if (!adapter.getSelectedExercises().isEmpty()) {
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("selectedExercises", new ArrayList<>(adapter.getSelectedExercises()));
                 setResult(RESULT_OK, resultIntent);
@@ -57,7 +55,10 @@ public class AddExerciseInWorkoutActivity extends AppCompatActivity {
             }
         });
 
-
+        btnCriar.setOnClickListener(v -> {
+            Intent intent = new Intent(this, CreateExerciseActivity.class);
+            startActivity(intent);
+        });
 
         btnCancelar.setOnClickListener(v -> finish());
 
@@ -72,9 +73,10 @@ public class AddExerciseInWorkoutActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     adapter = new ExerciseAdapter(response.body(), () -> {
                         int count = adapter.getSelectedExercises().size();
-                        btnCriar.setText("Adicionar exercício" + (count != 1 ? "s" : ""));
-                        btnCriar.setEnabled(count > 0);
-                        btnCriar.setVisibility(count > 0 ? View.VISIBLE : View.GONE);
+
+                        btnAdicionarExercicio.setText("Adicionar exercício" + (count != 1 ? "s" : ""));
+                        btnAdicionarExercicio.setEnabled(count > 0);
+                        btnAdicionarExercicio.setVisibility(count > 0 ? View.VISIBLE : View.GONE);
                     });
 
                     recyclerView.setAdapter(adapter);
