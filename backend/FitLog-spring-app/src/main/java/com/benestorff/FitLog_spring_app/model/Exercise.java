@@ -20,6 +20,7 @@ public class Exercise {
     private String name;
     private String muscleGroup;
     private String equipment;
+    private boolean isSelected = false;
 
     @Column(columnDefinition = "TEXT")
     private String instructions;
