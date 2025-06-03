@@ -9,9 +9,9 @@ import retrofit2.http.*;
 
 public interface WorkoutApi {
 
-    @GET("/api/users/{userId}/workouts")
+    @GET("/api/workouts/user/{userId}")
     Call<List<Workout>> getWorkoutsByUser(@Path("userId") Long userId);
 
-    @POST("/api/users/{userId}/workouts")
+    @POST("/api/workouts/user/{userId}")
     Call<Workout> createWorkout(@Path("userId") Long userId, @Body Workout workout);
 }
